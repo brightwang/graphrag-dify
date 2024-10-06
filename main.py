@@ -62,16 +62,8 @@ async def _resolve_parquet_files(
     return dataframe_dict
 
 
-token_encoder = tiktoken.get_encoding("cl100k_base")
-
 # 创建FastAPI实例
 app = FastAPI()
-
-
-# 定义一个GET请求的路由
-@app.get("/")
-async def read_root():
-    return {"Hello": "World"}
 
 
 @app.post("/v1/search")
