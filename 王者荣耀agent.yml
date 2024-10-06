@@ -1,0 +1,80 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: agent-chat
+  name: 王者荣耀agent
+  use_icon_as_answer_icon: false
+kind: app
+model_config:
+  agent_mode:
+    enabled: true
+    max_iteration: 5
+    prompt: null
+    strategy: function_call
+    tools:
+    - enabled: true
+      isDeleted: false
+      notAuthor: false
+      provider_id: 762d46de-127d-4b9b-a1cf-a4af17c37bc0
+      provider_name: 王者荣耀知识库
+      provider_type: workflow
+      tool_label: 王者荣耀知识库
+      tool_name: game_knowledge
+      tool_parameters:
+        active_docs: ''
+        query: ''
+  annotation_reply:
+    enabled: false
+  chat_prompt_config: {}
+  completion_prompt_config: {}
+  dataset_configs:
+    datasets:
+      datasets: []
+    retrieval_model: multiple
+  dataset_query_variable: ''
+  external_data_tools: []
+  file_upload:
+    image:
+      detail: high
+      enabled: false
+      number_limits: 3
+      transfer_methods:
+      - remote_url
+      - local_file
+  model:
+    completion_params:
+      stop: []
+    mode: chat
+    name: gpt-4o
+    provider: azure_openai
+  more_like_this:
+    enabled: false
+  opening_statement: ''
+  pre_prompt: '你是王者荣耀游戏助手
+
+    你的任务是根据game_knowledge的内容回答玩家问题，参数为{“active_docs”:"{{active_docs}}"}'
+  prompt_type: simple
+  retriever_resource:
+    enabled: true
+  sensitive_word_avoidance:
+    configs: []
+    enabled: false
+    type: ''
+  speech_to_text:
+    enabled: false
+  suggested_questions: []
+  suggested_questions_after_answer:
+    enabled: false
+  text_to_speech:
+    enabled: false
+    language: ''
+    voice: ''
+  user_input_form:
+  - text-input:
+      default: ''
+      label: active_docs
+      max_length: 48
+      required: true
+      variable: active_docs
+version: 0.1.2

@@ -1,0 +1,181 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: 王者荣耀知识库
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.2
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      image:
+        enabled: false
+    opening_statement: ''
+    sensitive_word_avoidance:
+      enabled: false
+    suggested_questions: []
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: http-request
+      id: 1728124683321-source-1728124687484-target
+      source: '1728124683321'
+      sourceHandle: source
+      target: '1728124687484'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: http-request
+        targetType: code
+      id: 1728124687484-source-1728136017132-target
+      source: '1728124687484'
+      sourceHandle: source
+      target: '1728136017132'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: end
+      id: 1728136017132-source-1728124876395-target
+      source: '1728136017132'
+      sourceHandle: source
+      target: '1728124876395'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - label: active_docs
+          max_length: 48
+          options: []
+          required: true
+          type: text-input
+          variable: active_docs
+        - label: query
+          max_length: 48
+          options: []
+          required: true
+          type: text-input
+          variable: query
+      height: 115
+      id: '1728124683321'
+      position:
+        x: 80
+        y: 282
+      positionAbsolute:
+        x: 80
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        authorization:
+          config: null
+          type: no-auth
+        body:
+          data: '{"active_docs":"{{#1728124683321.active_docs#}}","query":"{{#1728124683321.query#}}"}'
+          type: json
+        desc: ''
+        headers: ''
+        method: post
+        params: ''
+        selected: false
+        timeout:
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+        title: HTTP 请求
+        type: http-request
+        url: http://host.docker.internal:8000/v1/search
+        variables: []
+      height: 105
+      id: '1728124687484'
+      position:
+        x: 384
+        y: 282
+      positionAbsolute:
+        x: 384
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1728136017132'
+          - result
+          variable: body
+        selected: false
+        title: 结束
+        type: end
+      height: 89
+      id: '1728124876395'
+      position:
+        x: 988
+        y: 282
+      positionAbsolute:
+        x: 988
+        y: 282
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "\ndef main(body: str) -> dict:\n    import json\n    res=json.loads(body)\n\
+          \    return {\n        \"result\": res['result']\n    }\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 代码执行
+        type: code
+        variables:
+        - value_selector:
+          - '1728124687484'
+          - body
+          variable: body
+      height: 53
+      id: '1728136017132'
+      position:
+        x: 688
+        y: 282
+      positionAbsolute:
+        x: 688
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: -293.5
+      y: 46
+      zoom: 1
