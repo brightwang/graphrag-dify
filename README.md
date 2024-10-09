@@ -5,7 +5,6 @@
 ### 准备工作
 pyproject.toml中添加依赖包，并执行poetry install
 ```
-flask = "^3.0.3"
 fastapi = "^0.115.0"
 uvicorn = "^0.31.0"
 asyncio = "^3.4.3"
