@@ -1,9 +1,12 @@
 # graphrag-dify
 本视频时AI带路党Pro为分享视频准备[可能是第一个分享GraphRAG结合Dify使用的教程-GraphRAG实战教程2
 ](https://www.bilibili.com/video/BV1ud1iY3Em1)
-将graphrag暴露为http服务给dify使用
+将graphrag暴露为http服务给dify使用将graphrag暴露为http服务给dify使用
+
+### release log
+兼容官方2024.10.10变更目录
+
 ### 准备工作
-本视频测试为0.3.6左右版本，最新版有变更
 
 pyproject.toml中添加依赖包，并执行poetry install
 ```
