@@ -3,6 +3,7 @@
 ](https://www.bilibili.com/video/BV1ud1iY3Em1)
 将graphrag暴露为http服务给dify使用
 ### 准备工作
+本视频测试为0.3.6左右版本，最新版有变更
 pyproject.toml中添加依赖包，并执行poetry install
 ```
 fastapi = "^0.115.0"
