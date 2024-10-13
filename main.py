@@ -8,7 +8,7 @@ from typing import Union
 
 import tiktoken
 from graphrag.index.create_pipeline_config import create_pipeline_config
-import graphrag.query.api as api
+import graphrag.api.query_api as api
 from graphrag.query.indexer_adapters import read_indexer_reports, read_indexer_text_units
 from graphrag.query.llm.oai.typing import OpenaiApiType
 from graphrag.query.structured_search.local_search.mixed_context import LocalSearchMixedContext
