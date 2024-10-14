@@ -3,6 +3,8 @@
 ](https://www.bilibili.com/video/BV1ud1iY3Em1)
 将graphrag暴露为http服务给dify使用将graphrag暴露为http服务给dify使用
 
+**注意:本仓库代码需要和graphrag源码放一起**
+
 ### release log
 兼容官方2024.10.10变更目录
 
@@ -16,7 +18,7 @@ asyncio = "^3.4.3"
 utils = "^1.0.2"
 ```
 ### 文件存放位置
-- main.py 存放于项目跟目录
+- main.py 存放于grpahrag项目源码跟目录
 - search.py和search_prompt.py按照仓库中的目录位置覆盖graphrag的源文件
 - 将已经生成的索引存放于根目录下indexs目录中
 
