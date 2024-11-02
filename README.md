@@ -39,6 +39,7 @@ utils = "^1.0.2"
 
 ### 启动graphrag service
 > poetry shell
+> 
 > uvicorn main:app --reload --host 0.0.0.0 --port 8000
 ### dify dsl导入
 将dify的两个dsl导入，并重新把工作流发布为工具，并在agent中重新引用，具体可以参考视频
