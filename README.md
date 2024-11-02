@@ -6,7 +6,18 @@
 **注意:本仓库代码需要和graphrag源码放一起**
 
 ### release log
-兼容官方2024.10.10变更目录
+兼容官方2024.10.12版本cb052a742ffd9bad20035f957dd5be9fe5387235
+
+### 签出官方源码
+
+```bash
+# clone代码
+git clone https://github.com/microsoft/graphrag.git 
+# 进入目录
+cd graphrag
+# 进入10.12版本
+git checkout cb052a742ffd9bad20035f957dd5be9fe5387235
+```
 
 ### 准备工作
 
@@ -27,6 +38,7 @@ utils = "^1.0.2"
 > poetry run poe query --root ./indexs/wzry --method local --response_type search_prompt "项羽有什么技能"
 
 ### 启动graphrag service
+> poetry shell
 > uvicorn main:app --reload --host 0.0.0.0 --port 8000
 ### dify dsl导入
 将dify的两个dsl导入，并重新把工作流发布为工具，并在agent中重新引用，具体可以参考视频
