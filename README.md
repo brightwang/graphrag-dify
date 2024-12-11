@@ -6,8 +6,8 @@
 **注意:本仓库代码需要和graphrag源码放一起**
 
 ### release log
-兼容官方2024.10.12版本cb052a742ffd9bad20035f957dd5be9fe5387235
-
+2024.12.11更新
+支持官方v0.9.0版本
 ### 签出官方源码
 
 ```bash
@@ -15,8 +15,8 @@
 git clone https://github.com/microsoft/graphrag.git 
 # 进入目录
 cd graphrag
-# 进入10.12版本
-git checkout cb052a742ffd9bad20035f957dd5be9fe5387235
+# 切换为v0.9.0版本
+git checkout v0.9.0
 ```
 
 ### 准备工作

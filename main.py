@@ -1,29 +1,29 @@
 # 导入FastAPI
-import asyncio
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import JSONResponse
 import pandas as pd
 from pydantic import BaseModel
-from typing import Union
+from typing import Optional, Union
 
 import tiktoken
+from graphrag.config.models.graph_rag_config import GraphRagConfig
+from graphrag.config.resolve_path import resolve_paths
 from graphrag.index.create_pipeline_config import create_pipeline_config
-import graphrag.api.query_api as api
+from graphrag.cli.query import run_local_search
+import graphrag.api as api
 from graphrag.query.indexer_adapters import read_indexer_reports, read_indexer_text_units
+from graphrag.query.llm.oai.base import OpenAILLMImpl
 from graphrag.query.llm.oai.typing import OpenaiApiType
 from graphrag.query.structured_search.local_search.mixed_context import LocalSearchMixedContext
 from graphrag.query.structured_search.local_search.search import LocalSearch
-import utils
+# import utils
 from pathlib import Path
 import uvicorn
-from graphrag.query.llm.oai import ChatOpenAI, OpenAIEmbedding
 from graphrag.query.llm.base import BaseLLM
-from graphrag.config import (
-    GraphRagConfig,
-    load_config,
-    resolve_paths,
-)
-from graphrag.utils.storage import _create_storage, _load_table_from_storage
+from graphrag.config.load_config import (
+    load_config, )
+from graphrag.storage.factory import create_storage
+from graphrag.utils.storage import _load_table_from_storage
 
 
 class SearchQuery(BaseModel):
@@ -40,8 +40,7 @@ async def _resolve_parquet_files(
     """Read parquet files to a dataframe dict."""
     dataframe_dict = {}
     pipeline_config = create_pipeline_config(config)
-    storage_obj = _create_storage(root_dir=root_dir,
-                                  config=pipeline_config.storage)
+    storage_obj = create_storage(pipeline_config.storage)  # type: ignore
     for parquet_file in parquet_list:
         df_key = parquet_file.split(".")[0]
         df_value = await _load_table_from_storage(name=parquet_file,
