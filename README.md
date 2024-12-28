@@ -34,8 +34,8 @@ utils = "^1.0.2"
 - 将已经生成的索引存放于根目录下indexs目录中
 
 ### 测试
-大家可以参考如下命令，测试是否能够正常运行
-> poetry run poe query --root ./indexs/wzry --method local --response-type search_prompt "项羽有什么技能"
+
+- response type中增加了search_prompt参数，大家可以参考官方命令，测试是否能够正常运行
 
 ### 启动graphrag service
 > poetry shell
