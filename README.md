@@ -35,7 +35,7 @@ utils = "^1.0.2"
 
 ### 测试
 大家可以参考如下命令，测试是否能够正常运行
-> poetry run poe query --root ./indexs/wzry --method local --response_type search_prompt "项羽有什么技能"
+> poetry run poe query --root ./indexs/wzry --method local --response-type search_prompt "项羽有什么技能"
 
 ### 启动graphrag service
 > poetry shell
